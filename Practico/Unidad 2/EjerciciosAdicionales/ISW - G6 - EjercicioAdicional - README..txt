@@ -1,1 +1,1 @@
-Aqui se iran agregando ejercicios resueltos por los integrantes del grupo y en clases.
+Aqui se iran agregando ejercicios resueltos por los integrantes del grupo
