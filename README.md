@@ -2,14 +2,14 @@
 Repositorio de soporte al cursado de ISW 2021
 
 Integrantes: 
-    Amaranto Vilanova, Facundo - 78659 - facuvilanova98@gmail.com;
-    Bonzano, Evangelina - 80855 - evabonzano@gmail.com;
-    Carranza Duobaitis, Guadalupe - 78698 - guadi.carranza@gmail.com;
-    Cornejo Ruata, Ángeles - 78502 - angeles.cornejo.ruata@gmail.com ;
-    Pérez, Candela - 78293 - candemperez13@gmail.com;
-    Pérez, Leonardo - 81295 - fenixi1234567890@gmail.com;
-    Petroni Olmos, Antonella - 78340 - antopetrolmos@gmail.com;
-    Spalla, Gaspar - 72010 - gasparspalla@gmail.com;
+Amaranto Vilanova, Facundo - 78659 - facuvilanova98@gmail.com;
+Bonzano, Evangelina - 80855 - evabonzano@gmail.com;
+Carranza Duobaitis, Guadalupe - 78698 - guadi.carranza@gmail.com;
+Cornejo Ruata, Ángeles - 78502 - angeles.cornejo.ruata@gmail.com ;
+Pérez, Candela - 78293 - candemperez13@gmail.com;
+Pérez, Leonardo - 81295 - fenixi1234567890@gmail.com;
+Petroni Olmos, Antonella - 78340 - antopetrolmos@gmail.com;
+Spalla, Gaspar - 72010 - gasparspalla@gmail.com;
 
 En el siguiente repositorio encontraremos una variedad de tópicos acerca de la materia Ingeniería de Software 
 de la carrera de Ingeniería en Sistemas dictada por la Universidad Tecnológica Nacional Facultad Regional Córdoba.
