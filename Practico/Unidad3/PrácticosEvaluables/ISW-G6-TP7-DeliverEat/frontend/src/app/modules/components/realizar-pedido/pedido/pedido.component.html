@@ -1,0 +1,223 @@
+<div class="row justify-content-center padding-60">
+  <div class="col-8" id="pedido">
+    <div class="card-header-new">
+      <div class="row">
+        <mat-icon class="icon-header">person</mat-icon>
+        <h2 id="page-heading" class="title">
+          <span>Realizar pedido</span>
+        </h2>
+      </div>
+    </div>
+    <mat-card class="card-new">
+      <form [formGroup]="form">
+
+        <hr />
+        <div class="d-flex justify-content-center">
+          <h4 style="color: #757272; font-weight: bold">Dirección</h4>
+        </div>
+        <hr />
+        <br />
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline" class="width-100" color="primary">
+              <mat-label>Calle</mat-label>
+              <input matInput autosize="false" type="text" formControlName="txCalle" [(ngModel)]="data.calle" required>
+            </mat-form-field>
+            <control-messages [control]="txCalle"></control-messages>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline" class="width-100" color="primary">
+              <mat-label>Nro calle</mat-label>
+              <input matInput autosize="false" type="number" formControlName="txNroCalle" [(ngModel)]="data.nroCalle"
+                required>
+            </mat-form-field>
+            <control-messages [control]="txNroCalle"></control-messages>
+          </div>
+          <div class="form col-lg-4">
+            <mat-form-field appearance="outline" class="width-100" color="primary">
+              <mat-label class="color">Ciudad</mat-label>
+              <mat-select placeholder="Seleccione" formControlName="nCiudad" name="item" [(ngModel)]="data.idCiudad"
+                required>
+                <mat-option *ngFor="let item of ciudadLista" [value]="item.id">
+                  {{item.nombre}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <control-messages [control]="nCiudad"></control-messages>
+          </div>
+          <div class="col-12">
+            <mat-form-field class="width-100" appearance="outline">
+              <mat-label>Referencia</mat-label>
+              <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="5" [(ngModel)]="data.descripcion" formControlName="txDescripcion"
+                id="txtDescripcion" maxlength="2000"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex justify-content-center">
+          <h4 style="color: #757272; font-weight: bold">Forma de pago</h4>
+        </div>
+        <hr />
+        <br>
+        <div>
+          <label id="example-radio-group-label">Elija una forma de pago</label>
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+            [formControl]="rbFormaPago" [(ngModel)]="formaPago">
+            <mat-radio-button class="example-radio-button" *ngFor="let item of formaPagoLista" [value]="item">
+              {{item}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+      </form>
+      <form [formGroup]="formTarjeta">
+        <div [hidden]="formaPago !== 'Tarjeta Visa'">
+          <div class="d-flex justify-content-center">
+            <h5 style="color: #7f7f7f">Pago con tarjeta</h5>
+          </div>
+          <hr />
+          <br>
+          <div class="row">
+            <div class="col-lg-4">
+              <mat-form-field appearance="outline" class="width-100" color="primary">
+                <mat-label>Número de la tarjeta</mat-label>
+                <input matInput autosize="false" type="number" formControlName="txNroTarjeta"
+                  [(ngModel)]="data.tarjeta.nroTarjeta" [required]="formaPago === 'Tarjeta Visa'">
+              </mat-form-field>
+              <control-messages [control]="txNroTarjeta"></control-messages>
+            </div>
+            <div class="col-lg-4">
+              <mat-form-field appearance="outline" class="width-100" color="primary">
+                <mat-label>Nombre</mat-label>
+                <input matInput autosize="false" type="text" formControlName="txNombreTarjeta"
+                  [(ngModel)]="data.tarjeta.nombre" [required]="formaPago === 'Tarjeta Visa'">
+              </mat-form-field>
+              <control-messages [control]="txNombreTarjeta"></control-messages>
+            </div>
+            <div class="col-lg-4">
+              <mat-form-field appearance="outline" class="width-100" color="primary">
+                <mat-label>Apellido</mat-label>
+                <input matInput autosize="false" type="text" formControlName="txApellidoTarjeta"
+                  [(ngModel)]="data.tarjeta.apellido" [required]="formaPago === 'Tarjeta Visa'">
+              </mat-form-field>
+              <control-messages [control]="txApellidoTarjeta"></control-messages>
+            </div>
+            <div class="form col-lg-4">
+              <mat-form-field appearance="outline" class="width-100" color="primary">
+                <mat-label>Fecha vencimiento</mat-label>
+                <input matInput [matDatepicker]="dp" formControlName="dpFechaVencimiento"
+                [required]="!dpFechaVencimiento.value" readonly [min]="minDate">
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp startView="year" (yearSelected)="chosenYearHandler($event)"
+                  (monthSelected)="chosenMonthHandler($event, dp)" class="example-month-picker">
+                </mat-datepicker>
+              </mat-form-field>
+              <control-messages [control]="dpFechaVencimiento"></control-messages>
+            </div>
+            <div class="col-lg-4">
+              <mat-form-field appearance="outline" class="width-100" color="primary">
+                <mat-label>CVC</mat-label>
+                <input matInput autosize="false" type="number" formControlName="txCVC" [(ngModel)]="data.tarjeta.CVC"
+                  [required]="formaPago === 'Tarjeta Visa'">
+              </mat-form-field>
+              <control-messages [control]="txCVC"></control-messages>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form [formGroup]="formEfectivo">
+        <div [hidden]="formaPago !== 'Efectivo'">
+          <div class="d-flex justify-content-center">
+            <h5 style="color: #7f7f7f">Pago en efectivo</h5>
+          </div>
+          <hr />
+          <br>
+          <div class="row">
+            <div class="col-lg-4">
+              <mat-form-field appearance="outline" class="width-100" color="primary">
+                <mat-label>Efectivo</mat-label>
+                <input matInput autosize="false" type="number" formControlName="txEfectivo" [(ngModel)]="data.efectivo"
+                  [required]="formaPago === 'Efectivo'">
+              </mat-form-field>
+              <control-messages [control]="txEfectivo"></control-messages>
+            </div>
+          </div>
+        </div>
+
+      </form>
+      <form [formGroup]="form">
+        <div class="d-flex justify-content-center">
+          <h4 style="color: #757272; font-weight: bold">Hora de entrega</h4>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-slide-toggle formControlName="horaEntrega">Lo antes posible</mat-slide-toggle>
+          </div>
+        </div>
+        <div class="row" [hidden]="horaEntrega.value">
+          <div class="col-lg-4">
+            <mat-form-field class="width-100" appearance="outline">
+              <mat-label>Fecha y hora de entrega</mat-label>
+              <input [ngxMatDatetimePicker]="pickerHoraEntrega" [formControl]="dpFechaEntrega" matInput
+                [required]="!horaEntrega.value" readonly [min]="minDate" [(ngModel)]="fechaEntrega">
+              <mat-datepicker-toggle [for]="pickerHoraEntrega" matSuffix></mat-datepicker-toggle>
+              <ngx-mat-datetime-picker class="pruebin" #pickerHoraEntrega [color]="'primary'" [enableMeridian]="true"
+                [showSeconds]="false" [showSpinners]="true" [stepHour]="true" [stepMinute]="true" [stepSecond]="false"
+                [touchUi]="true">
+              </ngx-mat-datetime-picker>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <mat-card-actions>
+          <div class="row float-right" style="margin-bottom: 2%;">
+            <div class="col-auto">
+              <button mat-button class="btn cancel" type="button" (click)="anterior()">Anterior</button>
+              <button mat-raised-button class="btn btn-abm-component mat-stroked-button" [disabled]="valdiarForms()"
+                (click)="crearDetalle()" ng-click="btnVisible = true" (click)="verBtnGuardar()">Confirmar
+              </button>
+            </div>
+          </div>
+        </mat-card-actions>
+        <table [hidden]="formaPago !=='Efectivo'" class="table" id="excel-table" style="margin-bottom: 5%;" >
+
+          <body>
+            <tr *ngFor="let detalle of listDetalle">
+              <td> <b>Restaurante: </b> Bar El Cordobés</td>
+              <td> <b>Su pedido: </b> {{detalle.txCantidad}} Lomo Clásico Doble </td>
+              <td><b>Domicilio: </b> {{detalle.txCalle}}</td>
+              <td><b>Nro: </b> {{detalle.txNroCalle}}</td>
+              <td><b>Referencia: </b> {{detalle.txDescripcion}}</td>
+              <td><b>Total $: </b> {{detalle.txCantidad*450}}</td>
+              <td><b>Su vuelto será de $: </b>{{detalle.txEfectivo-detalle.txCantidad*450}}</td>
+              <td><b>Su Pago fue realizado con:</b>Efectivo</td>
+              <td [hidden]="horaEntrega.value"><b>Su pedido será entregado a las:</b>{{fechaEntrega|date:'shortTime'}}</td>
+              <td [hidden]="!horaEntrega.value"><b>Su pedido será entregado:</b>Lo antes posible</td>
+
+            </tr>
+          </body>
+        </table>
+        <table [hidden]="formaPago !=='Tarjeta Visa'" class="table" id="excel-table" style="margin-bottom: 5%;">
+
+          <body>
+            <tr *ngFor="let detalle of listDetalle">
+              <td> <b>Restaurante: </b> Bar El Cordobés</td>
+              <td> <b>Su pedido: </b> {{detalle.txCantidad}} Lomo Clásico Doble </td>
+              <td><b>Domicilio: </b> {{detalle.txCalle}}</td>
+              <td><b>Nro: </b> {{detalle.txNroCalle}}</td>
+              <td><b>Referencia: </b> {{detalle.txDescripcion}}</td>
+              <td><b>Total $: </b> {{detalle.txCantidad*450}}</td>
+              <td><b>Su pago fue realizado con:</b> Tarjeta Visa</td>
+              <td [hidden]="horaEntrega.value"><b>Su pedido será entregado a las:</b>{{fechaEntrega|date:'shortTime'}}</td>
+              <td [hidden]="!horaEntrega.value"><b>Su pedido será entregado:</b>Lo antes posible</td>
+            </tr>
+          </body>
+        </table>
+        <button mat-raised-button class="btn btn-abm-component mat-stroked-button"
+          (click)="guardarExcel()" *ngIf="btnGuardar">Guardar
+        </button>
+      </form>
+    </mat-card>
+  </div>
+</div>

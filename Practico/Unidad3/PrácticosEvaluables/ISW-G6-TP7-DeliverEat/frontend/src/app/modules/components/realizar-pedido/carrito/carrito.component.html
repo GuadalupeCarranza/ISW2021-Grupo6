@@ -1,0 +1,74 @@
+<div class="row justify-content-center padding-60">
+  <div class="col-lg-8 col-md-10 col-xl-8 mt-4">
+    <div class="card-header-new">
+      <div class="row">
+        <mat-icon class="icon-header">person</mat-icon>
+        <h2 id="page-heading" class="title">
+          <span>Mi pedido</span>
+        </h2>
+      </div>
+    </div>
+    <mat-card class="card-new">
+      <form [formGroup]="form">
+        <hr/>
+        <div class="d-flex justify-content-center">
+          <h4 style="color: #757272; font-weight: bold">Pedido</h4>
+        </div>
+        <hr/>
+        <br/>
+        <div class="d-flex justify-content-center">
+          <mat-card class="example-card mat-elevation-z4">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>Bar El Cordobés</mat-card-title>
+              <mat-card-subtitle>Resto - Bar</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="assets/lomos-1.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <span  class="badge badge-info">Lomo Clásico Doble</span>
+              <p>
+                Doble bife de lomo, jamón, queso, huevo, lechuga, tomate, mayonesa casera y papas fritas.
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <div class="row justify-content-center">
+                <div class="col-lg-6">
+                  <mat-form-field class="width-100" appearance="outline">
+                    <mat-label>Cantidad</mat-label>
+                    <mat-select formControlName="nCantidad"
+                                name="item"
+                                placeholder="Seleccione" required>
+                      <mat-option *ngFor="let item of cantidad" [value]="item">
+                        {{item}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-6">
+                  <mat-form-field appearance="outline" class="width-100" color="primary">
+                    <mat-label>Total</mat-label>
+                    <input matInput autosize="false" type="text" formControlName="txTotal"
+                           readonly style="text-align: right;">
+                    <mat-icon matPrefix style="color: #adb5bd">attach_money</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <mat-card-actions>
+          <div class="row float-right">
+            <div class="col-auto">
+              <button mat-raised-button
+                      class="btn btn-abm-component mat-stroked-button"
+                      [disabled]="form.invalid"
+                      (click)="guardarPedido()">Confirmar
+              </button>
+            </div>
+          </div>
+        </mat-card-actions>
+        <br>
+      </form>
+    </mat-card>
+  </div>
+</div>

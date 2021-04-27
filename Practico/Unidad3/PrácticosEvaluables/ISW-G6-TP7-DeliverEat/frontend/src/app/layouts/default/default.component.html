@@ -1,0 +1,16 @@
+<app-header (toggleSideBarForMe)="sideBarToggler($event)"></app-header>
+
+<mat-drawer-container>
+
+
+<!--    <mat-drawer mode="side" class="mat-elevation-z9 offSidebar" *ngIf="!sideBarOpen && isAuthenticated" [opened]="!sideBarOpen" position="start">
+      <app-sidebar-mini></app-sidebar-mini>
+    </mat-drawer>-->
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<app-footer></app-footer>
+

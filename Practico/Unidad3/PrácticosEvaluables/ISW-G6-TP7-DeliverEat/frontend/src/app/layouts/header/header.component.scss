@@ -1,0 +1,25 @@
+ul li {
+  list-style: none;
+}
+
+.mat-button {
+  color: white !important;
+  align-content: center;
+}
+
+.padding-15 {
+  padding-top: 15px
+}
+
+.grad {
+  background-image: linear-gradient(to right, #E9C46A, #E76F51);
+}
+
+.logo-img {
+  height: 50px;
+  width: 250px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('/src/assets/logo_letras.png') no-repeat center center;
+  background-size: contain;
+}

@@ -1,0 +1,88 @@
+<div class="text-center justify-content-center">
+  <div [ngSwitch]="type">
+    <div *ngSwitchCase="1">
+      <div class="bodyMessage">
+        <div>
+          <mat-icon class="notificacion-icon">notification_important</mat-icon>
+          <i class="fas fa-exclamation-circle fa-5x tar-warning"></i>
+        </div>
+        <div>
+          <h3 class="tar-warning">{{title}}</h3>
+        </div>
+        <div>
+          <p class="tar-grey-dark">{{message}}</p>
+        </div>
+      </div>
+      <button mat-stroked-button
+              class="tar-grey-dark no-button" [mat-dialog-close]="false">
+        Cancelar
+      </button>
+      <button mat-stroked-button
+              class="tar-warning yes-button" cdkFocusInitial [mat-dialog-close]="true">
+        Aceptar
+      </button>
+    </div>
+    <div *ngSwitchCase="2">
+      <div class="bodyMessage">
+        <div>
+          <mat-icon>delete_forever</mat-icon>
+          <i class="far fa-trash-alt fa-5x tar-danger"></i>
+        </div>
+        <div>
+          <h3 class="tar-danger">{{title}}</h3>
+        </div>
+        <div>
+          <p class="tar-grey-dark">{{message}}</p>
+        </div>
+      </div>
+      <button mat-stroked-button
+              class="tar-grey-dark no-button" [mat-dialog-close]="false">
+        Cancelar
+      </button>
+      <button mat-stroked-button
+              class="tar-danger yes-button" cdkFocusInitial [mat-dialog-close]="true">
+        Aceptar
+      </button>
+    </div>
+    <div *ngSwitchCase="3">
+      <div class="bodyMessage">
+        <div>
+          <mat-icon>check_circle_outline</mat-icon>
+          <i class="fas fa-check fa-5x tar-success"></i>
+        </div>
+        <div>
+          <h3 class="tar-success">{{title}}</h3>
+        </div>
+        <div>
+          <p class="tar-grey-dark">{{message}}</p>
+        </div>
+      </div>
+      <button mat-stroked-button class="tar-success ok-botton"
+              [mat-dialog-close]="true">
+        Aceptar
+      </button>
+    </div>
+    <div *ngSwitchCase="4">
+      <div class="bodyMessage">
+        <div>
+          <div>
+            <mat-icon>warning</mat-icon>
+        </div>
+        <div>
+          <h3 class="tar-danger">{{title}}</h3>
+        </div>
+        <div>
+          <p class="tar-grey-dark">{{message}}</p>
+        </div>
+      </div>
+      <button mat-stroked-button class="tar-danger ok-botton"
+              [mat-dialog-close]="true">
+        Aceptar
+      </button>
+    </div>
+    <div *ngSwitchDefault>
+      <i class="fas fa-sad-cry fa-5x"></i>
+    </div>
+  </div>
+</div>
+

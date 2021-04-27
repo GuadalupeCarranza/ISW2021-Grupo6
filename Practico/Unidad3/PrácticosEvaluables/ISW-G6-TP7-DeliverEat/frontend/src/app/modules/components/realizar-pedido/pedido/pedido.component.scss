@@ -1,0 +1,27 @@
+.example-radio-group {
+  display: flex;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}
+
+
+
+@media screen and (max-width: 400px) {
+  table {
+    display:block;
+    overflow-x: scroll;
+  }
+}
+
